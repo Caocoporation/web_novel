@@ -1,0 +1,19 @@
+{% extends "index.htm" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <div class="author-background">
+            <h2 class="pen-name-tag">Pen Name</h2>
+            <p class="pen-name">{{ author.name }}</p>
+            <h2 class="background-tag">Author Info</h6>
+            <p class="about-author">{{ author.description }}</p>
+        </div>
+
+        {% if user.is_authenticated and user.is_staff == 1 %}
+            <button class="delete-btn">Delete Author</button>
+            <a href="{% url 'author-deletion' author.id %}">Delete Author</a>
+            <a href="{% url 'novel-creation' author.id %}">Add New Novel</a>
+        {% endif %}
+    </div>
+{% endblock content %}
+ 

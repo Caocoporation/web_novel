@@ -1,0 +1,36 @@
+{% extends "index.htm" %}
+{% block content %}
+    <div class="chapters">
+        <div class="content">
+            {% if user.is_authenticated and user.is_staff == 1 %}
+                <button class="novel-delete-btn">Delete</button>
+                <a href="{% url 'chapter-update' chapter.id %}" class="update-novel-link">
+                    <button class="chapter-update-btn">Update</button>
+                </a>
+
+                <a href="{% url 'chapter-deletion' chapter.id %}" class="chapter-deleting-btn">
+                    <button class="chapter-deletion-btn" >Delete</button>
+                </a>
+            {% endif %}
+            
+            <div class="chapter-wrapper">
+                <div class="chapter-info">
+                    <h2 class="chapter-title">{{ chapter.title }}</h2>
+                    <small>{{ chapter.posted_date }}</small>
+                </div>
+
+                <div class="chapter-content-wrapper">
+                    <div class="chapter-thumbnail-wrapper">                     
+                        <img src="{{ chapter_thumbnail.illustrations.url }}" alt="no image" class="chapter-thumbnail">
+                    </div>
+
+                    <p class="chapter-content">
+                        {% for paragrahp in chapter_content %}
+                            <p class="chapter-row">{{ paragrahp }}</p>
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>                
+        </div>
+    </div>
+{% endblock content %} 

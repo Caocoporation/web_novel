@@ -1,0 +1,156 @@
+/* https://www.cssmatic.com/box-shadow */
+
+div.main-body{
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas: 
+        "latest-novels popular-novel"
+        "completed-novels popular-novel";
+
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-top: 10px;
+}
+
+div.popular-novels{
+    grid-area: popular-novel;
+    height: auto;
+    margin-left: 10px;
+}
+
+div.popular-novels-768{
+    display: none;
+}
+
+div.popular-novels ul{
+    padding: 5px;
+}
+
+div.popular-novels ul li{
+    list-style-type: none;
+    height: 50px;
+    margin-bottom: 5px;
+    box-shadow: 0px 12px 13px -6px rgba(0,0,0,0.58);
+    display: flex;
+    align-items: center;
+    padding: 4px;
+}
+
+div.popular-novels ul li:hover{
+    background-color: rgb(211, 208, 208);
+}
+
+div.popular-novels ul li img.novel-thumbnail-2{
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    margin-right: 5px;
+    border-radius: 6px;
+    box-shadow: 0px 3px 13px -5px rgba(0,0,0,0.82);
+}
+
+div.popular-novels ul li span.ranking{
+    width: 25px;
+    height: 25px;
+    border-radius: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+div.popular-novels ul li span.p-novel-title{
+    margin-left: 8px;
+}
+
+div.latest-content{
+    grid-area: latest-novels;
+    margin-bottom: 30px;
+}
+
+div.latest-content div.latest-novel{
+    margin-top: 15px;
+}
+
+div.completed-content{
+    grid-area: completed-novels;
+}
+
+h3{
+    background-color: rgb(187, 195, 202);
+    padding-left: 6px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+img.novel-thumbnail{
+    height: 250px;
+    width: 150px;
+    box-shadow: 1px -3px 33px -9px rgba(0,0,0,0.69);
+}
+
+div.novel-content{
+    width: 160px;
+    height: 350px;
+    display: inline-block;
+    margin-left: 5px;
+    border-radius: 2px;
+}
+
+div.novel-content div.novel-info p.novel-title{
+    background-color: rgb(49, 49, 49);
+    color: white;
+    width: 150px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+}
+
+@media screen and (max-width: 768px){
+    div.main-body{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-auto-rows: minmax(100px, auto);
+        grid-template-areas: 
+            " popular-novel"
+            "latest-novels"
+            "completed-novels";
+    
+        font-family: Arial, Helvetica, sans-serif;
+        margin-top: 10px;
+    }
+
+    div.popular-novels{
+        display: none;
+    }
+
+    div.popular-novels-768{
+        grid-area: popular-novel;
+        margin-left: 0px;
+        margin-bottom: 15px;
+        width: 100%;
+        display: initial;
+    }
+
+    div.popular-novels-768 ul{
+        display: flex;
+        overflow-y: auto;
+    }
+
+    div.popular-novels-768 ul li{
+        width: 120px;
+        list-style-type: none;
+    }
+
+    div.popular-novels-768 ul li img{
+        width: 100px;
+        height: 100px;
+        margin: 5px;
+        border-radius: 5px;
+        box-shadow: 1px -3px 33px -9px rgba(0,0,0,0.69);
+    }
+}

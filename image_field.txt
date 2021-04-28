@@ -1,0 +1,7 @@
+List of Studying Material 
+
+https://stackoverflow.com/questions/5135556/dynamic-file-path-in-django
+
+https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
+
+https://stackoverflow.com/questions/42102064/how-can-i-upload-mutlple-images-at-same-time-in-django

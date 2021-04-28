@@ -1,0 +1,41 @@
+{% extends "index.htm" %}
+{% block content %}
+    <div class="chapters">
+        <a href="{% url 'chapter-addition' novel_id %}" class="add-chapter-link">
+            <button class="add-chapter-btn"><i class="far fa-plus-square" style="font-size: 25px;"></i><span>Add New Chapter</span> </button>
+        </a>
+
+        {% for chapter in chapters %}
+            <div class="content" id="content-{{ chapter.id }}">
+                {% if user.is_authenticated and user.is_staff == 1 %}
+                    <button class="chapter-remove-btn" data-chapter-id="{{ chapter.id }}">Delete</button>    
+                    <a href="{% url 'chapter-update' chapter.id %}" class="update-novel-link">
+                        <button class="chapter-update-btn">Update</button>
+                    </a>              
+                {% endif %} 
+                
+                <div class="chapter-wrapper">
+                    <div class="chapter-name" id="chapter-{{ chapter.id }}">
+                        <a href="{% url 'chapter' chapter.id %}" class="chapter-link">{{ chapter.title }}</a>
+                    </div>
+                    <hr>
+                </div>                
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-bg" id="modal-bg-{{ novel.id }}">
+        <div class="modal-body">
+            <div class="modal-title">Delete post</div>
+            <div class="modal-content">
+                Do you really want to delete the novel?
+            </div>
+            <div class="modal-footer">
+                <button class="cancel-btn" id="cancel-btn-{{ novel.id }}" >Cancel</button>
+                <button class="chapter-confirm-btn" id="confirm-btn-{{ novel.id }}">Confirm</button>
+            </div>
+        </div>                              
+    </div>
+
+{% endblock content %}

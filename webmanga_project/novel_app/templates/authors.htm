@@ -1,0 +1,20 @@
+{% extends "index.htm" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    
+    <div class="content-section">
+        {% for author in authors %}
+            <div class="author-background">
+                <h2 class="pen-name-tag">Pen-Name</h6>
+                <a href="{% url 'author' author.id %}" class="pen-name">{{author.name}}</a>
+                <h2 class="background-tag">Backgound Info</h6>
+                <p class="about-author">{{author.description}}</p>
+            </div>
+            <hr>
+        {% endfor %}
+        
+        {% if user.is_authenticated and user.is_staff == 1 %}
+            <a href="{% url 'author-creation' %}">Create New Author</a>
+        {% endif %}
+    </div> 
+{% endblock content %}

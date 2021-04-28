@@ -1,0 +1,30 @@
+{% extends "index.htm" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <h1>Personal Info</h1>
+        <div class="avatar">
+            <img src="{{ user.profile.avatar.url }}" alt="no image">
+        </div> 
+
+        <div class="user-infor">
+            <h1>Name : {{ user.first_name }} {{ user.last_name }}</h1> 
+            <h1>Email : {{ user.email }}</h1>
+        </div>
+
+        <div class="content-section">
+            <form action="" method="POST" class="register-form" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="register-field">
+                    <legend class="register-legend">Update Profile</legend>
+                    {{ u_form|crispy }}
+                    {{ p_form|crispy }}
+                </fieldset>
+                
+                <div class="submit-wrapper">
+                    <input type="submit" class="register-submit-button" value="Save">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

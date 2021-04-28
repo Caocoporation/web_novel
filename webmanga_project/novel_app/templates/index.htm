@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="data" content="novel page" data-csrf-token="{{ csrf_token }}">
+    {% block meta %}{% endblock meta %}
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet"  href="{% static 'css/index.css' %}">
+    <link rel="stylesheet"  href="{% static 'css/utils.css' %}">
+    <link rel="stylesheet"  href="{% static 'css/novel.css' %}">
+    <link rel="stylesheet"  href="{% static 'css/chapter.css' %}">
+    {% block css %}{% endblock css %}
+    
+    <title>Home</title> 
+</head>
+<body>
+    <header>
+        <div class="top-header-wrapper">
+            <div class="logo-wrapper">
+                <a href="{% url 'novel-page' %}">
+                    <img src="" alt="logo" class="logo-image">
+                </a>
+            </div>
+
+            <div class="search-section">
+     
+                <div class="search-wrapper">
+                    <input type="text" class="search-box" placeholder="Type to search...">
+                    <div class="search-icon-wrapper">
+                        <i class="fa fa-search" id="search-icon"></i>
+                    </div>
+                </div>
+
+                <div class="search-results"></div>
+               
+            </div>
+     
+            <div class="other-section">
+                <div class="avatar">
+                    {% if user.is_authenticated %}
+                        <img src="{{ user.profile.avatar.url }}" alt="no image" class="user-avatar">
+                    {% else %}
+                        <img src="http://127.0.0.1:8000/media/default.png" alt="default avatar" class="user-avatar">
+                    {% endif %}                      
+                </div>
+
+                
+                    <div class="user-avatar-nav" >
+                        <nav class="nav-bar" id="nav-bar">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link ml-2" href="{% url 'user-profile' %}">Profile</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link ml-2" href="#">Favorite</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    
+                <div class="notification">
+                    <i class='far fa-bell' style="font-size: 30px;"></i>
+                    <span class="number-noti"></span>
+                </div>
+                <div class="other">
+                    <i class="fa fa-cog" id="cog-icon" style="font-size:30px;"></i>
+                </div>
+
+                <div class="nav-wrapper" style="display: none;">
+                    <nav class="nav-bar" id="nav-bar">
+                        <ul class="navbar-nav">
+    
+                            <li class="nav-item">
+                                <a class="nav-link ml-2" href="{% url 'novel' %}">Latest Novels</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link ml-2" href="#">Completed Novels</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link ml-2" href="{% url 'authors' %}">Author</a>
+                            </li>
+        
+                            {% if user.is_authenticated %}                    
+                                <li class="nav-item">
+                                    <a class="nav-link ml-2" href="{% url 'logout' %}">Logout</a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link ml-2" href="{% url 'login' %}">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link ml-2" href="{% url 'register' %}">Register</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        
+        <div class="lower-header">
+            <div class="popular-novel">
+                <div class="horizontal-scrolling-showcase"></div>
+            </div>
+        </div>
+         
+    </header>
+    <div class="alert-message">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert-message {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="main-body">
+        {% block content %}{% endblock content %}
+    </div>
+
+    <footer>
+        <div class="container">
+            <button class="testing-btn">Test</button>
+            <p>Copyright &copy; 2020 CAOLIGHTNOVEL</p> 
+            <div class="other-sections">
+                <nav>
+                    <ul>
+                        <li>Privacy Policy</li>
+                        <li>About Us</li>
+                        <li>Contact Us</li>
+                    </ul>
+                </nav>  
+            </div>
+        </div>
+        
+    </footer>
+</body>
+<script src="{% static 'javascript/index.js' %}"></script>
+<script src="{% static 'javascript/utils.js' %}"></script>
+<script src="{% static 'javascript/jquery.mousewheel.min.js' %}"></script>
+
+{% block javascript %}{% endblock javascript %}
+</html>

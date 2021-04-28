@@ -1,0 +1,344 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas: 
+        "header"
+        "alert-message"
+        "main-body"
+        "footer";
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: whitesmoke;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas: 
+        "top-header"
+        "lower-header";
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header div.top-header-wrapper{
+    display: grid;
+    grid-area: top-header;
+    grid-template-columns: 15% 55% 30%;
+    background-color: rgb(167, 167, 167);
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas: 
+        "logo search-section other-section";     
+}
+
+/* logo search-section other-section */
+
+header div.top-header-wrapper div.logo-wrapper{
+    grid-area: logo;
+    background-color: rgb(167, 167, 167);
+    height: 100px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+}
+
+header div.top-header-wrapper div.search-section{
+    grid-area: search-section;
+    background-color: rgb(167, 167, 167);
+    height: 100px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+}
+
+header div.top-header-wrapper div.search-section div.search-wrapper{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    background-color: rgb(167, 167, 167);
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas: 
+        "text search-icon";     
+}
+
+header div.top-header-wrapper div.search-section div.search-wrapper input{
+    grid-area: text;
+    height: 40px;
+    margin: 30px 0px;
+    border: none;
+    border-radius: 2px;
+    padding-left: 5px;
+}
+
+header div.top-header-wrapper div.search-section div.search-wrapper div.search-icon-wrapper{
+    grid-area: search-icon;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: left;
+    background-color: rgb(167, 167, 167);
+}
+
+header div.top-header-wrapper div.search-section div.search-wrapper div.search-icon-wrapper i{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(75, 75, 75);
+    color: rgb(238, 238, 238);
+    cursor: pointer;
+}
+
+header div.top-header-wrapper div.search-section div.search-wrapper div.search-icon-wrapper i:hover{
+    background-color: rgb(117, 117, 117);
+}
+
+header div.top-header-wrapper div.burger-nav{
+    display: none;
+}
+
+/* header div.top-header-wrapper div.mobile-avatar{
+    display: none;
+    height: 100px;
+    background-color: black;
+} */
+
+header div.top-header-wrapper div.other-section{
+    grid-area: other-section;
+    display: grid;
+    background-color: rgb(167, 167, 167);
+    height: 100px;
+    grid-template-columns: 2.5% 30% 2.5% 30% 2.5% 30% 2.5%;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas: 
+        ". avatar . notification . other .";    
+    position: relative;
+}
+
+header div.top-header-wrapper div.other-section div.avatar{
+    grid-area: avatar;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(167, 167, 167);
+}
+
+header div.top-header-wrapper div.other-section div.avatar img{
+    height: 50px;
+    width: 50px;
+    border-radius: 200px;
+}
+
+header div.top-header-wrapper div.other-section div.user-avatar-nav{
+    position: absolute;
+    top: 100px;
+    background-color: aqua;
+    width: 100%;
+}
+
+header div.top-header-wrapper div.other-section div.user-avatar-nav nav ul{
+    background-color: rgb(167, 167, 167);
+    padding: 3px;
+}
+
+header div.top-header-wrapper div.other-section div.user-avatar-nav nav ul li{
+    list-style-type: none;
+    height: 28px;
+    padding-left: 10px;
+    padding-top: 3px;
+    margin: 2px;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: -1px 0px 5px -1px rgba(0,0,0,0.75);
+    cursor: pointer;
+}
+
+header div.top-header-wrapper div.other-section div.user-avatar-nav nav ul li:hover{
+    background-color: rgb(220, 220, 220);
+}
+
+header div.top-header-wrapper div.other-section div.user-avatar-nav nav ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+header div.top-header-wrapper div.other-section div.notification{
+    grid-area: notification;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(167, 167, 167);
+}
+
+header div.top-header-wrapper div.other-section div.notification i{
+    background-color: rgb(167, 167, 167);
+    cursor: pointer;
+}
+
+header div.top-header-wrapper div.other-section div.notification i:hover{
+    background-color: rgb(167, 167, 167);
+    color: rgb(230, 227, 227);
+}
+
+header div.top-header-wrapper div.other-section div.other{
+    grid-area: other;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(167, 167, 167);
+}
+
+header div.top-header-wrapper div.other-section div.other i{
+    background-color: rgb(167, 167, 167);
+    cursor: pointer;
+}
+
+header div.top-header-wrapper div.other-section div.other i:hover{
+    background-color: rgb(167, 167, 167);
+    color: rgb(230, 227, 227);
+}
+
+header div.lower-header{
+    grid-area: lower-header;
+}
+
+header div.lower-header div.popular-novel{
+    grid-area: popular;
+    background-color: rgb(167, 167, 167);
+    height: 200px;
+    margin-top: 10px;
+}
+
+body div.alert-message{
+    display: grid;
+    grid-area: alert-message;
+    background-color: rgb(131, 100, 100);
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    font-family: Arial, Helvetica, sans-serif;
+    grid-row-gap: 30px;
+    margin-top: 10px;
+}
+
+footer{
+    grid-area: footer;
+    margin-top: 10px;
+    background-color: rgb(167, 167, 167);
+    text-align: right;
+}
+
+footer div.container{
+    background-color: rgb(167, 167, 167);
+}
+
+footer div.container p{
+    background-color: rgb(167, 167, 167);
+}
+
+footer div.container div.other-sections{
+    background-color: rgb(167, 167, 167);
+    margin-top: 10px;
+}
+
+footer div.container div.other-sections nav{
+    background-color: rgb(167, 167, 167);
+}
+
+footer div.container div.other-sections nav ul{
+    display: inline-flex;
+    background-color: rgb(167, 167, 167);
+}
+
+footer div.container div.other-sections nav ul li{
+    text-decoration: none;
+    list-style: none;
+    margin-right: 5px;   
+    background-color: rgb(167, 167, 167);
+}
+
+footer div.container div.other-sections nav ul ~ li{
+    color: aqua;
+}
+
+
+/* -------- 768px ------------------ */
+
+@media screen and (max-width: 768px){
+    header div.top-header-wrapper{
+        display: grid;
+        grid-template-columns: 15% 45% 40%;
+        grid-auto-rows: minmax(0px, auto);
+        grid-template-areas: 
+            "logo .  other-section"
+            "search-section search-section search-section"
+            "popular popular popular";
+           
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header div.top-header-wrapper div.search-section{
+        padding: 0% 10%;
+    }
+
+    header div.top-header-wrapper div.search-section div.search-results{
+        position: absolute;
+        top: 100px;
+    }
+
+    header div.top-header-wrapper div.burger-nav{
+        grid-area: burger-nav;
+        display: flex;
+        background-color: rgb(167, 167, 167);
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+    }
+
+    div.burger-nav div.burger-wrapper i{
+        height: 50px;
+        width: 50px;
+        font-size: 40px;
+        display: flex;
+        background-color: rgb(167, 167, 167);
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        color: black;
+    }
+
+    div.burger-nav div.burger-wrapper i:hover{
+        color: rgb(255, 240, 240);
+    }
+
+    div.burger-content{
+        position: absolute;
+        top: 100px;
+    }
+
+    header div.top-header-wrapper div.search-section{
+        display: none;
+    }
+
+    header div.top-header-wrapper div.other-section{
+        grid-area: other-section;
+        background-color: rgb(167, 167, 167);
+    }
+}   
+
+

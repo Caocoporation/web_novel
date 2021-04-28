@@ -1,0 +1,96 @@
+.modal-bg{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s opacity 1.5s;
+}
+
+.modal-bg-hidden{
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-body{
+    background-color: azure;
+    width: 35%;
+    height: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modal-title{
+    border-bottom: 1px black solid;
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.modal-content{
+    border-bottom: 1px black solid;
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+button.novel-delete-btn{
+    background-color: rgba(250, 0, 0, 0.815);
+    color: black;
+}
+
+button.novel-delete-btn:hover{
+    background-color: rgba(255, 32, 32, 0.815);
+}
+
+button.chapter-adding-btn
+button.novel-delete-btn
+button.novel-update-btn{
+    border: none;
+    width: 60px;
+    height: 60px;
+}
+
+button.chapter-adding-btn{
+    background-color: rgb(0, 189, 0);
+}
+
+a.add-chapter-link{
+    text-decoration: none;
+}
+
+a.add-chapter-link button.add-chapter-btn{
+    display: flex;
+    align-items: center;
+    background-color: rgb(57, 180, 57);
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+a.add-chapter-link button.add-chapter-btn i{
+    background-color: rgb(57, 180, 57);
+}
+
+a.add-chapter-link button.add-chapter-btn span{
+    padding-left: 9px;
+    background-color: rgb(57, 180, 57);
+}

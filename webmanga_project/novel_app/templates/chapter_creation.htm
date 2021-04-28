@@ -1,0 +1,18 @@
+{% extends "index.htm" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form action="" method="POST" class="register-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="register-field">
+                <legend class="register-legend">Add New Chapter</legend>
+                {{ c_form|crispy }}
+                {{ i_form|crispy }}
+            </fieldset>
+            
+            <div class="submit-wrapper">
+                <input type="submit" class="register-submit-button" value="Save">
+            </div>
+        </form>
+    </div>
+{% endblock content %} 

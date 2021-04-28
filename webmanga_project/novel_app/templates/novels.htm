@@ -1,0 +1,104 @@
+{% extends "index.htm" %}
+
+{% block content %}
+    <div class="latest-content">
+        <h3>Latest Novels</h3>
+        <div class="latest-novel">
+            {% for novel, image in novel_data %}
+                <div class="novel-content" id="novel-{{ novel.id }}">
+                    {% if user.is_authenticated and user.is_staff == 1 %}
+                        <button class="novel-delete-btn" data-novel-id="{{ novel.id }}" data-csrf-token="{{ csrf_token }}"><i class="far fa-trash-alt" style="font-size: 24px;"></i></button>
+
+                        <a href="{% url 'novel-update' novel.id %}" class="update-novel-link" style="text-decoration: none;">
+                            <button class="novel-update-btn"><i class="far fa-edit" style="font-size: 24px;"></i></button>
+                        </a>
+                        <a href="{% url 'chapter-addition' novel.id %}" class="chapter-adding-btn">
+                            <button class="chapter-adding-btn"><i class="far fa-plus-square" style="font-size: 24px;"></i></button>
+                        </a>
+                    {% endif %}
+
+                    <div class="novel-thumbnail">
+                        <img src="{{ image.image.url }}" alt="no image" class="novel-thumbnail" id="{{ novel.id }}">
+                    </div>
+
+                    <div class="novel-info">
+                        <p class="novel-title">{{ novel.title }}</p>
+                        <p class="novel-view" ><i class="fas fa-eye"></i> {{ novel.views }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div> 
+    </div>
+
+    <div class="completed-content">
+        <h3>Completed Novels</h3>
+        <div class="completed-novel">
+            {% for novel, image in novel_data %}
+                {% if novel.status == "completed" %}
+                    <div class="novel-content" id="novel-{{ novel.id }}">
+                        {% if user.is_authenticated and user.is_staff == 1 %}
+                            <button class="novel-delete-btn" data-novel-id="{{ novel.id }}" data-csrf-token="{{ csrf_token }}">Delete</button>
+
+                            <a href="{% url 'novel-update' novel.id %}" class="update-novel-link">
+                                <button class="novel-update-btn">Update</button>
+                            </a>
+                            <a href="{% url 'chapter-addition' novel.id %}" class="chapter-adding-btn">
+                                <button class="chapter-adding-btn">Add Chapter</button>
+                            </a>
+
+                        {% endif %}
+                        <div class="novel-thumbnail">
+                            <img src="{{ image.image.url }}" alt="no image" class="novel-thumbnail" id="{{ novel.id }}" data-novel-link="{% url 'chapters' novel.id %}">
+                        </div>
+
+                        <div class="novel-info">
+                            <p class="post-date">{{ novel.posted_date }}</p>
+                            <p class="title">{{ novel.title }}</p>
+                            <p class="view" >{{ novel.views }}</p>
+                            <p class="recap">{{ novel.content }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="popular-novels">
+        <h3>Popular Novels</h3>
+        <ul class="popular-novel-list">
+            {% for order, popular_novel, thumbnail in popular_novels %}
+                <li class="novel-item" id="{{ popular_novel.id }}">
+                    <span class="ranking" id="{{ order }}">{{ order }}</span>
+                    <img src="{{ thumbnail.image.url }}" alt="no image" class="novel-thumbnail-2">
+                    <span class="p-novel-title" id="{{ order }}">{{ popular_novel.title }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="popular-novels-768">
+        <h3>Popular Novels</h3>
+        <ul class="popular-novel-list">
+            {% for order, popular_novel, thumbnail in popular_novels %}
+                <li class="novel-item" id="{{ popular_novel.id }}">
+                    <img src="{{ thumbnail.image.url }}" alt="no image" class="novel-thumbnail-2">
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-bg" id="modal-bg-{{ novel.id }}">
+        <div class="modal-body">
+            <div class="modal-title">Delete post</div>
+            <div class="modal-content">
+                Do you really want to delete the novel?
+            </div>
+            <div class="modal-footer">
+                <button class="cancel-btn" id="cancel-btn-{{ novel.id }}" >Cancel</button>
+                <button class="novel-confirm-btn" id="confirm-btn-{{ novel.id }}">Confirm</button>
+            </div>
+        </div>                              
+    </div>
+
+{% endblock content %}

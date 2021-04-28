@@ -1,0 +1,14 @@
+{% extends "index.htm" %}
+{% block content %}
+    <div class="content">
+        {% for novel, image in novel_data %}
+            <div class="novel-content">
+                <img src="{{ image.url }}" alt="no image">
+                <p class="post-date">{{ novel.posted_date }}</p>
+                <p class="title">{{ novel.title }}</p>
+                <p class="view" >{{ novel.views }}</p>
+                <p class="recap">{{ novel.content }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %} 
